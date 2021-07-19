@@ -1,19 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app2">
+    <Header :loading="pyodideLoading" />
+    <transition name="slide-fade" appear>
+      <div id="app">
+        <ModelForm @pyodide-loaded="handlePyodideLoaded" />
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ModelForm from "./pages/ModelForm.vue";
+import Header from "./components/Header.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    ModelForm,
+    Header,
+  },
+  data() {
+    return {
+      pyodideLoading: true,
+    };
+  },
+  methods: {
+    handlePyodideLoaded() {
+      this.pyodideLoading = false;
+    },
+  },
+};
 </script>
 
 <style>
@@ -24,5 +40,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
 }
 </style>
