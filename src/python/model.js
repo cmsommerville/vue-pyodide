@@ -33,7 +33,7 @@ export default {
     import pickle
     from sklearn.svm import SVC
     `,
-  async executePython(model, paramList) {
+  async scoreModel(model, paramList) {
     let res = window.pyodide.runPythonAsync(`
           model_encoded = b'${model}'
           model_obj = pickle.loads(base64.b64decode(model_encoded))

@@ -1,6 +1,5 @@
 import pickle
 import base64
-import numpy
 from sklearn import datasets
 from sklearn.svm import SVC
 

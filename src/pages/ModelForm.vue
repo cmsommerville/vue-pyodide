@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Iris Dataset</h1>
+    <h1>Iris Classifier</h1>
     <form @submit.prevent="executePython">
       <div
         class="input-wrapper"
@@ -30,7 +30,7 @@
     <transition name="slide-fade">
       <div class="iris" v-if="iris">
         <h4>
-          The iris is of type: <span class="iris-type">{{ iris }}</span
+          The iris species is: <span class="iris-species">{{ iris }}</span
           >.
         </h4>
       </div>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import modelConfig from "../pymodels/model";
+import modelConfig from "../python/model";
 
 export default {
   name: "ModelForm",
@@ -51,13 +51,11 @@ export default {
       pyodideLoaded: false,
       errorMsg: "",
       iris: null,
-
       modelParams: modelConfig.modelInputs,
     };
   },
   async mounted() {
     this.initializePyodide();
-    console.log("Mounted!");
   },
   computed: {
     paramList() {
@@ -87,7 +85,7 @@ export default {
       this.iris = null;
       await window.pyodideReadyPromise;
       try {
-        this.iris = await modelConfig.executePython(
+        this.iris = await modelConfig.scoreModel(
           modelConfig.model,
           this.paramList
         );
@@ -117,18 +115,18 @@ form,
   margin-bottom: 1rem;
 }
 
-.iris-type {
+.iris-species {
   font-style: italic;
 }
 
 #btn-score-model {
-  background-color: hsl(153, 80%, 50%);
+  background-color: hsl(105, 50%, 85%);
   color: #222;
   transition: all 0.2s ease-out;
 }
 
 #btn-score-model:hover {
-  background-color: hsl(153, 100%, 70%);
+  background-color: hsl(105, 70%, 70%);
   transform: scale(1.05);
 }
 </style>

@@ -3,10 +3,10 @@
     <nav>
       <div class="progress-bar" v-if="loading"></div>
       <div class="nav-logo">
-        <img src="@/assets/logo.png" alt="Company logo" class="logo-image" />
+        <img src="@/assets/logo-transparent-icon.png" alt="American Modern Insurance Group logo" class="logo-image" />
       </div>
       <div class="nav-title">
-        <h2>Actuarial Pricing</h2>
+        <h2>Actuarial Services</h2>
       </div>
     </nav>
   </header>
@@ -34,11 +34,11 @@ header {
   position: sticky;
   top: 0;
   left: 0;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
 
 nav {
-  background-color: hsl(153, 50%, 75%);
+  background-color: hsl(106, 50%, 85%);
   height: 70px;
   width: 100%;
   display: flex;
@@ -46,6 +46,7 @@ nav {
   align-items: center;
   flex-direction: row;
 }
+
 
 .nav-logo,
 .nav-title {
@@ -61,9 +62,9 @@ nav {
   animation: move 2s linear infinite;
   background-image: linear-gradient(
     to right,
-    hsl(153, 50%, 75%),
-    hsl(153, 65%, 60%) 50%,
-    hsl(153, 50%, 75%) 100%
+    hsl(106, 50%, 85%),
+    hsl(106, 65%, 65%) 50%,
+    hsl(106, 50%, 85%) 100%
   );
 }
 
